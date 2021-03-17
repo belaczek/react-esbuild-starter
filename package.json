@@ -1,0 +1,29 @@
+{
+  "name": "react-esbuild-starter",
+  "version": "1.0.0",
+  "description": "Starter template for React + Typescript, powered by Esbuild",
+  "main": "src/index.js",
+  "repository": "https://github.com/belaczek/react-esbuild-starter.git",
+  "author": "Tomas Belada <tomas@belada.net>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently --names www,esb,tsc -c green.bold,blue.bold,red.bold --kill-others yarn:dev-server yarn:bundle:watch yarn:tsc:watch",
+    "bundle": "esbuild src/index.tsx --outfile=www/dist/bundle.js --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --define:process.env.NODE_ENV='\"development\"'",
+    "bundle:watch": "yarn bundle --watch --color=true",
+    "dev-server": "PORT=5000 live-server www --host=localhost",
+    "build": "tsc && yarn bundle --minify --define:process.env.NODE_ENV='\"production\"'",
+    "tsc:watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "esbuild": "^0.9.3",
+    "live-server": "^1.2.1",
+    "typescript": "^4.2.3"
+  }
+}
