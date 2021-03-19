@@ -7,8 +7,8 @@
   "author": "Tomas Belada <tomas@belada.net>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently --names esb,tsc -c green.bold,blue.bold --kill-others \"yarn:bundle --dev\" \"tsc --watch\" ",
-    "build": "tsc && yarn bundle",
+    "start": "concurrently --names tsc,esb -c green.bold,blue.bold --kill-others \"yarn:bundle --dev\" \"tsc --watch\" ",
+    "build": "concurrently --success --names tsc,esb -c green.bold,blue.bold tsc yarn:bundle",
     "bundle": "node ./esbuild.config.mjs",
     "test": "echo 'TODO'"
   },
