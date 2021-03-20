@@ -10,6 +10,7 @@ esbuild
     outfile: "www/dist/bundle.js",
     minify: !isDevServer,
     sourcemap: true,
+    incremental: isDevServer,
     target: ["chrome58", "firefox57", "safari11", "edge16"],
     define: {
       "process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
